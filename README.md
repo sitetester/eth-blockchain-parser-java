@@ -1,1 +1,2 @@
-# eth-blockchain-parser-java
+- This will run multiple HTTP requests using Java 8 CompletableFuture.
+- Entry point - ImportManager
