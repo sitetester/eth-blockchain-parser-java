@@ -13,15 +13,15 @@ public class ImportManager {
 
     public static void main(String[] args) throws IOException, SQLException, ExecutionException, InterruptedException {
 
-        var isFreshSetup = false;
+        var isFreshSetup = true;
         var start = 0;
-        var incrementBy = 10;
+        var incrementBy = 100;
 
         var importHelper = new ImportHelper();
 
         if (isFreshSetup) {
             importHelper.setupFreshDb();
-            start = -9;
+            start = -99;
         } else {
             start = importHelper.getLastScannedBlockNumber();
         }
