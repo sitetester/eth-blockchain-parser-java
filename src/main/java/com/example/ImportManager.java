@@ -2,7 +2,6 @@ package com.example;
 
 import com.example.entity.Block;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -11,19 +10,14 @@ import java.util.stream.IntStream;
 
 public class ImportManager {
 
-    public static void main(String[] args) throws IOException, SQLException, ExecutionException, InterruptedException {
+    public static void main(String[] args) throws SQLException, ExecutionException, InterruptedException {
 
-        var isFreshSetup = true;
-        var start = 0;
         var incrementBy = 100;
 
         var importHelper = new ImportHelper();
-
-        if (isFreshSetup) {
-            importHelper.setupFreshDb();
+        var start = importHelper.getLastScannedBlockNumber();
+        if (start == 0) {
             start = -99;
-        } else {
-            start = importHelper.getLastScannedBlockNumber();
         }
 
         while (true) {
